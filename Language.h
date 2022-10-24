@@ -1,0 +1,156 @@
+#pragma once
+#include <string>
+#include "Preselectable.h"
+#define LANGUAGE_INDEX_NUMBER 43
+
+class Language final : public virtual Preselectable {
+public:
+	static const constexpr char* const DENOMINATION[LANGUAGE_INDEX_NUMBER] = {
+		"NA",
+		"AR",
+		"EU",
+		"BE",
+		"BN",
+		"BG",
+		"CA",
+		"HR",
+		"CS",
+		"NL",
+		"EN",
+		"ET",
+		"FI",
+		"FR",
+		"DE",
+		"EL",
+		"HI",
+		"HU",
+		"IS",
+		"ID",
+		"GA",
+		"IT",
+		"JA",
+		"KO",
+		"LA",
+		"LV",
+		"LT",
+		"CMN",
+		"YUA",
+		"NAH",
+		"NB",
+		"PL",
+		"PT",
+		"RO",
+		"RU",
+		"SCO",
+		"SK",
+		"SL",
+		"ES",
+		"SV",
+		"TR",
+		"UK",
+		"CY"
+	};
+	static const constexpr char* const VALUE[LANGUAGE_INDEX_NUMBER] = {
+		"Sin especificar",
+		"Árabe",
+		"Vasco Euskera",
+		"Bielorruso",
+		"Bengalí",
+		"Búlgaro",
+		"Catalán",
+		"Croata",
+		"Checo",
+		"Neerlandés",
+		"Inglés",
+		"Estonio",
+		"Finés",
+		"Francés",
+		"Alemán",
+		"Griego",
+		"Hindi",
+		"Húngaro",
+		"Islandés",
+		"Indonesio",
+		"Irlandés",
+		"Italiano",
+		"Japonés",
+		"Coreano",
+		"Latín",
+		"Letón",
+		"Lituano",
+		"Mandarín",
+		"Maya",
+		"Náhuatl",
+		"Noruego",
+		"Polaco",
+		"Portugués",
+		"Rumano",
+		"Ruso",
+		"Escocés",
+		"Eslovaco",
+		"Esloveno",
+		"Español",
+		"Sueco",
+		"Turco",
+		"Ucraniano",
+		"Galés"
+	};
+	enum class Value : size_t {
+		NONE,
+		ARABIC,
+		BASQUE,
+		BELARUSIAN,
+		BENGALI,
+		BULGARIAN,
+		CATALAN,
+		CROATIAN,
+		CZECH,
+		DUTCH,
+		ENGLISH,
+		ESTONIAN,
+		FINNISH,
+		FRENCH,
+		GERMAN,
+		GREEK,
+		HINDI,
+		HUNGARIAN,
+		ICELANDIC,
+		INDONESIAN,
+		IRISH,
+		ITALIAN,
+		JAPANESE,
+		KOREAN,
+		LATIN,
+		LATVIAN,
+		LITHUANIAN,
+		MANDARIN,
+		MAYAN,
+		NAHUATL,
+		NORWEGIAN,
+		POLISH,
+		PORTUGUESE,
+		ROMANIAN,
+		RUSSIAN,
+		SCOTS,
+		SLOVAK,
+		SLOVENIAN,
+		SPANISH,
+		SWEDISH,
+		TURKISH,
+		UKRAINIAN,
+		WELSH
+	};
+	explicit Language(void) = default;
+	explicit Language(const Language::Value& value);
+	Language(const Language& language) = default;
+	~Language(void) = default;
+	constexpr Language& operator=(const Language& language) = default;
+	Language::Value getValue(void) const;
+	void setValue(const Language::Value& value);
+	std::string getDenomination(void) const override;
+	std::string getStringValue(void) const override;
+	std::string toString(void) const override;
+private:
+	Value value{ Language::Value::NONE };
+	size_t index{ static_cast<size_t>(value) };
+};
